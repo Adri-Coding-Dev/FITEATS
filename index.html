@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FITEATS - Comida Saludable Delivery</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="assets/FITEATS_Logo.jpeg">
+</head>
+<body>
+    <!-- Canvas para el fondo dinámico -->
+    <canvas id="background-canvas"></canvas>
+
+    <!-- Pantalla de carga -->
+    <div class="loading">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Navbar FLOTANTE para DESKTOP (solo visible en desktop) -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="#" class="logo">FIT<span>EATS</span></a>
+            
+            <ul class="nav-links">
+                <li><a href="#popular">Popular</a></li>
+                <li><a href="#sensaciones">Sensaciones</a></li>
+                <li><a href="#mediterraneo">Mediterraneo</a></li>
+                <li><a href="#postres">Postres</a></li>
+                <li><a href="#contact">Contacto</a></li>
+            </ul>
+            
+            <div class="nav-right">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Buscar plato...">
+                </div>
+                <div class="cart-btn">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Navbar para MÓVIL (solo visible en móvil) -->
+    <nav class="mobile-navbar">
+        <div class="mobile-navbar-container">
+            <a href="#" class="logo">FIT<span>EATS</span></a>
+            
+            <div class="mobile-nav-right">
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <button class="mobile-cart-btn">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="mobile-cart-count">0</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Menú móvil (solo visible en móvil cuando se activa) -->
+    <div class="mobile-menu">
+        <ul>
+            <li><a href="#popular">Popular</a></li>
+            <li><a href="#sensaciones">Sensaciones</a></li>
+            <li><a href="#mediterraneo">Mediterraneo</a></li>
+            <li><a href="#postres">Postres</a></li>
+            <li><a href="#about">Sobre Nosotros</a></li>
+            <li><a href="#team">Equipo</a></li>
+            <li><a href="#contact">Contacto</a></li>
+        </ul>
+        
+        <div class="mobile-search">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="Buscar plato...">
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-container">
+            <div class="hero-content fade-in">
+                <h1>Comida saludable <span>sin renunciar al sabor</span></h1>
+                <p>FITEATS es tu restaurante 100% delivery especializado en comida saludable. Ofrecemos platos deliciosos, nutritivos y preparados con ingredientes frescos, para que cuides tu cuerpo sin sacrificar el placer de comer bien.</p>
+                <div class="hero-buttons">
+                    <a href="#" class="btn btn-outline" id="download-menu">Descargar Carta (PDF)</a>
+                </div>
+            </div>
+            <div class="hero-image fade-in">
+                <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Comida saludable FITEATS" class="food-image">
+                <div class="image-border"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Catálogo - Los más populares -->
+    <section id="popular" class="catalogo">
+        <div class="container">
+            <div class="catalogo-header">
+                <h2>Los más populares</h2>
+            </div>
+            
+            <div class="catalogo-container">
+                <div class="catalogo-scroll" id="popular-scroll">
+                    <!-- Los platos se cargarán con JavaScript -->
+                </div>
+                
+                <div class="scroll-btn scroll-left">
+                    <i class="fas fa-chevron-left"></i>
+                </div>
+                <div class="scroll-btn scroll-right">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Catálogo - Sensaciones -->
+    <section id="sensaciones" class="catalogo">
+        <div class="container">
+            <div class="catalogo-header">
+                <h2>Sensaciones</h2>
+            </div>
+            
+            <div class="catalogo-container">
+                <div class="catalogo-scroll" id="sensaciones-scroll">
+                    <!-- Los platos se cargarán con JavaScript -->
+                </div>
+                
+                <div class="scroll-btn scroll-left">
+                    <i class="fas fa-chevron-left"></i>
+                </div>
+                <div class="scroll-btn scroll-right">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Catálogo - Mediterraneo -->
+    <section id="mediterraneo" class="catalogo">
+        <div class="container">
+            <div class="catalogo-header">
+                <h2>Mediterraneo</h2>
+            </div>
+            
+            <div class="catalogo-container">
+                <div class="catalogo-scroll" id="mediterraneo-scroll">
+                    <!-- Los platos se cargarán con JavaScript -->
+                </div>
+                
+                <div class="scroll-btn scroll-left">
+                    <i class="fas fa-chevron-left"></i>
+                </div>
+                <div class="scroll-btn scroll-right">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Catálogo - Postres -->
+    <section id="postres" class="catalogo">
+        <div class="container">
+            <div class="catalogo-header">
+                <h2>Postres</h2>
+            </div>
+            
+            <div class="catalogo-container">
+                <div class="catalogo-scroll" id="postres-scroll">
+                    <!-- Los platos se cargarán con JavaScript -->
+                </div>
+                
+                <div class="scroll-btn scroll-left">
+                    <i class="fas fa-chevron-left"></i>
+                </div>
+                <div class="scroll-btn scroll-right">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre Nosotros -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title-center">¿Qué es FITEATS?</h2>
+            <div class="about-content">
+                <div class="about-text fade-in">
+                    <p>FITEATS es un restaurante 100% delivery especializado en comida saludable, creado para personas que desean cuidarse sin renunciar al sabor ni a la comodidad.</p>
+                    <p>Nuestro enfoque se basa en la calidad, nutrición y cercanía con nuestros clientes. Utilizamos ingredientes frescos y procesos cuidados para ofrecer una experiencia gastronómica que promueve un estilo de vida saludable.</p>
+                    <p>Creemos en una relación honesta y transparente con nuestros clientes, con un compromiso a largo plazo con su bienestar.</p>
+                    
+                    <div class="about-values">
+                        <div class="value-item">
+                            <i class="fas fa-leaf"></i>
+                            <h4>Ingredientes Frescos</h4>
+                            <p>Seleccionamos los mejores productos de temporada</p>
+                        </div>
+                        <div class="value-item">
+                            <i class="fas fa-heart"></i>
+                            <h4>Nutrición Equilibrada</h4>
+                            <p>Platos diseñados por expertos en nutrición</p>
+                        </div>
+                        <div class="value-item">
+                            <i class="fas fa-truck"></i>
+                            <h4>Delivery Rápido</h4>
+                            <p>Entregamos en tiempo récord manteniendo la calidad</p>
+                        </div>
+                        <div class="value-item">
+                            <i class="fas fa-star"></i>
+                            <h4>Calidad Premium</h4>
+                            <p>Alta cocina con estándares gourmet</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Equipo FITEATS - Sección oscura -->
+    <section id="team" class="team dark-section">
+        <div class="container">
+            <h2 class="section-title-center">Nuestro Equipo</h2>
+            <div class="team-grid">
+                <div class="member-black">
+                    <img src="assets/members/estepa.jpeg" alt="Estepa">
+                    <div class="member-content">
+                        <h1 class="member-name">David Estepa Muñoz</h1>
+                        <h2 class="member-role">Cofundador – Técnico contable</h2>
+                        <h2 class="member-education">ADE (UCM) – Mejor promedio de su promoción</h2>
+                    </div>
+                </div>
+
+                <div class="member-white">
+                    <img src="assets/members/javi.jpeg" alt="Javi">
+                    <div class="member-content">
+                        <h1 class="member-name">Javier Nebro Medrán</h1>
+                        <h2 class="member-role">Cofundador – Atención al cliente</h2>
+                        <h2 class="member-education">Administración y Finanzas + Certificado Atención al Cliente</h2>
+                    </div>
+                </div>
+
+                <div class="member-black">
+                    <img src="assets/members/dani.jpeg" alt="Dani">
+                    <div class="member-content">
+                        <h1 class="member-name">Daniel García Ramírez</h1>
+                        <h2 class="member-role">Cofundador – Administración</h2>
+                        <h2 class="member-education">ADE (UCO) – Promedio 9.2 (mejor de su promoción)</h2>
+                    </div>
+                </div>
+
+                <div class="member-white">
+                    <img src="assets/members/guille.jpeg" alt="Francisco">
+                    <div class="member-content">
+                        <h1 class="member-name">Francisco Guillermo Geremías Ortiz</h1>
+                        <h2 class="member-role">Cofundador – Director de Marketing</h2>
+                        <h2 class="member-education">Administración y Finanzas + Marketing y Publicidad</h2>
+                    </div>
+                </div>
+
+                <div class="member-black">
+                    <img src="assets/members/alberto.jpeg" alt="Alberto">
+                    <div class="member-content">
+                        <h1 class="member-name">Alberto Lucena Rasero</h1>
+                        <h2 class="member-role">Cofundador – Jefe de cocina</h2>
+                        <h2 class="member-education">Dirección de cocina – Ganador MasterChef Junior 2016</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title-center">Contacto</h2>
+            <div class="contact-container">
+                <div class="contact-info fade-in">
+                    <h3>Información del negocio</h3>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Dirección</h4>
+                            <p>Avd. Gran Capitán, 4, Córdoba</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Teléfono</h4>
+                            <p>+34 642 295 057</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>fiteatscordoba@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h4>Horario</h4>
+                            <p>Lunes a Domingo: 12:00 - 23:00</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form fade-in">
+                    <h3 style="color: white;margin-left: 15px;">Formulario de contacto</h3>
+                    <form id="contactForm" class="formulario">
+                        <div class="form-group">
+                            <label for="name">Nombre</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Correo electrónico</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Mensaje</label>
+                            <textarea id="message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Enviar mensaje</button>
+                    </form>
+                    <div class="form-success" id="contactSuccess">
+                        <i class="fas fa-check-circle"></i> Mensaje enviado correctamente. Te responderemos pronto.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-about">
+                    <a href="#" class="footer-logo">FIT<span>EATS</span></a>
+                    <p>Comida saludable 100% delivery para quienes buscan cuidarse sin renunciar al sabor ni a la comodidad.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Enlaces rápidos</h4>
+                    <ul>
+                        <li><a href="#popular">Los más populares</a></li>
+                        <li><a href="#sensaciones">Sensaciones</a></li>
+                        <li><a href="#mediterraneo">Mediterraneo</a></li>
+                        <li><a href="#postres">Postres</a></li>
+                        <li><a href="#about">Sobre nosotros</a></li>
+                        <li><a href="#contact">Contacto</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h4>Contacto</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> Avd. Gran Capitán, 4, Córdoba</p>
+                    <p><i class="fas fa-phone"></i> +34 642 295 057</p>
+                    <p><i class="fas fa-envelope"></i> fiteatscordoba@gmail.com</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 FITEATS. Todos los derechos reservados. | Comida saludable delivery</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Carrito de compras -->
+    <div class="cart-overlay">
+        <div class="cart-panel">
+            <div class="cart-header">
+                <h2>Tu Carrito</h2>
+                <button class="close-cart"><i class="fas fa-times"></i></button>
+            </div>
+            
+            <div class="cart-items">
+                <!-- Los items del carrito se cargarán con JavaScript -->
+                <div class="cart-empty">
+                    <i class="fas fa-shopping-cart"></i>
+                    <p>Tu carrito está vacío</p>
+                    <p>Añade algunos platos deliciosos</p>
+                </div>
+            </div>
+            
+            <div class="cart-total" style="display: none;">
+                <span>Total:</span>
+                <span id="cart-total-price">0.00€</span>
+            </div>
+            
+            <button class="btn" id="checkout-btn" style="width: 100%; display: none;">Finalizar Compra</button>
+        </div>
+    </div>
+
+    <!-- Checkout modal -->
+    <div class="checkout-overlay">
+        <div class="checkout-modal">
+            <div class="checkout-form" id="checkout-form">
+                <div class="cart-header">
+                    <h2>Finalizar Compra</h2>
+                    <button class="close-cart close-checkout"><i class="fas fa-times"></i></button>
+                </div>
+                
+                <p>Completa tus datos para proceder con la compra (simulada)</p>
+                
+                <form id="checkoutForm">
+                    <div class="form-group">
+                        <label for="checkout-name" style="color: black;">Nombre completo</label>
+                        <input type="text" id="checkout-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="checkout-email" style="color: black;">Correo electrónico</label>
+                        <input type="email" id="checkout-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="checkout-address" style="color: black;">Dirección de entrega</label>
+                        <input type="text" id="checkout-address" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="checkout-phone" style="color: black;">Teléfono</label>
+                        <input type="tel" id="checkout-phone" required>
+                    </div>
+                    <button type="submit" class="btn" style="width: 100%;">Confirmar compra</button>
+                </form>
+            </div>
+            
+            <div class="checkout-success" id="checkout-success" style="display: none;">
+                <i class="fas fa-check-circle"></i>
+                <h3>¡Compra realizada con éxito!</h3>
+                <p>Tu pedido ha sido procesado correctamente.</p>
+                <p>Recibirás un correo de confirmación en breve.</p>
+                <p>Gracias por confiar en FITEATS.</p>
+                <a href="index.html"><button class="btn close-checkout">Continuar comprando</button></a>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
