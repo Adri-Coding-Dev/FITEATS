@@ -6,106 +6,6 @@ document.getElementById('download-menu').addEventListener("click", function(){
     link.click();
 });
 
-
-
-// ====================== CANVAS PARA EL FONDO FIJO ======================
-class WaveBackground {
-    constructor() {
-        this.canvas = document.getElementById('background-canvas');
-        this.ctx = this.canvas.getContext('2d');
-        
-        this.init();
-    }
-    
-    init() {
-        this.setupCanvas();
-        this.drawBackground();
-        
-        // Redimensionar canvas cuando cambie el tamaño de la ventana
-        window.addEventListener('resize', () => {
-            this.setupCanvas();
-            this.drawBackground();
-        });
-    }
-    
-    setupCanvas() {
-        // Ajustar el canvas al tamaño de la ventana
-        this.canvas.width = window.innerWidth;
-        this.canvas.height = window.innerHeight;
-        this.dpr = window.devicePixelRatio || 1;
-        
-        // Ajustar para dispositivos con alta densidad de píxeles
-        this.canvas.style.width = window.innerWidth + 'px';
-        this.canvas.style.height = window.innerHeight + 'px';
-        this.canvas.width = window.innerWidth * this.dpr;
-        this.canvas.height = window.innerHeight * this.dpr;
-        this.ctx.scale(this.dpr, this.dpr);
-    }
-    
-    drawBackground() {
-        const width = window.innerWidth;
-        const height = window.innerHeight;
-        const ctx = this.ctx;
-        
-        // Limpiar canvas
-        ctx.clearRect(0, 0, width, height);
-        
-        // Dibujar fondo negro en toda la pantalla
-        ctx.fillStyle = '#000000';
-        ctx.fillRect(0, 0, width, height);
-        
-        // Crear forma orgánica para la parte blanca
-        ctx.beginPath();
-        ctx.moveTo(0, 0);
-        
-        // Línea superior recta
-        ctx.lineTo(width * 0.48, 0);
-        
-        // Crear curva orgánica en el medio
-        const wavePoints = 10;
-        const waveAmplitude = 80;
-        
-        for (let i = 0; i <= wavePoints; i++) {
-            const y = (i / wavePoints) * height;
-            // Crear una curva suave y orgánica
-            const xOffset = Math.sin((i / wavePoints) * Math.PI * 2) * waveAmplitude;
-            const x = width * 0.48 + xOffset;
-            
-            if (i === 0) {
-                ctx.lineTo(x, y);
-            } else {
-                // Usar curvas bezier para transición suave
-                const prevX = width * 0.48 + Math.sin(((i-1) / wavePoints) * Math.PI * 2) * waveAmplitude;
-                const prevY = ((i-1) / wavePoints) * height;
-                
-                const cp1x = prevX + (x - prevX) * 0.5;
-                const cp1y = prevY + 30;
-                const cp2x = prevX + (x - prevX) * 0.5;
-                const cp2y = y - 30;
-                
-                ctx.bezierCurveTo(cp1x, cp1y, cp2x, cp2y, x, y);
-            }
-        }
-        
-        // Completar la forma (parte inferior derecha a parte inferior izquierda)
-        ctx.lineTo(0, height);
-        ctx.lineTo(0, 0);
-        
-        // Rellenar con blanco
-        ctx.fillStyle = '#ffffff';
-        ctx.fill();
-        
-        // Añadir un degradado sutil en el borde para suavizar la transición
-        const gradient = ctx.createLinearGradient(width * 0.45, 0, width * 0.55, 0);
-        gradient.addColorStop(0, 'rgba(255, 255, 255, 0.1)');
-        gradient.addColorStop(0.5, 'rgba(255, 255, 255, 0.05)');
-        gradient.addColorStop(1, 'transparent');
-        
-        ctx.fillStyle = gradient;
-        ctx.fillRect(width * 0.45, 0, width * 0.1, height);
-    }
-}
-
 // ====================== DATOS DE LA APLICACIÓN ======================
 // Datos de los platos
 const dishes = {
@@ -295,9 +195,6 @@ let cartTotal = 0;
 
 // ====================== INICIALIZACIÓN DE LA APLICACIÓN ======================
 document.addEventListener('DOMContentLoaded', function() {
-    // Inicializar el fondo de canvas FIJO
-    const waveBackground = new WaveBackground();
-    
     // Ocultar pantalla de carga después de 1.5 segundos
     setTimeout(() => {
         document.querySelector('.loading').classList.add('hidden');
